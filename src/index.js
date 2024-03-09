@@ -9,6 +9,6 @@ const root = ReactDOM.createRoot(el);
 
 root.render(
     <Provider>
-        <App /> /* Apps.js is passed down as 'children' */
+        <App /> 
     </Provider>
   );

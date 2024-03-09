@@ -1,25 +1,21 @@
 import BookShow from './BookShow'; 
-import BooksContext from '../context/books';
-import { useContext } from 'react';
+import useBooksContext from '../hooks/use-books-context';
 
-function BookList ( {books, onDelete, onEdit } ) {  // props received
-    const { count, incrementCount } = useContext(BooksContext); // retrieving info using Context here
+function BookList () {  // props received no longer needed since we have context
+
+    const { books } = useBooksContext();  //reach into context to get the Books info
+
     const renderedBooks = books.map((book) => {
-        return <BookShow 
-            onEdit = {onEdit}
-            onDelete = {onDelete}  // passing the function on downstream
-            key = {book.id}
-            book = {book}
-            />;
+        return (
+            <BookShow // still simplest to pass just the selected book instead of bookshow reaching into context to find it
+                key = {book.id} 
+                book = { book } />
+        );
     });
+
     return (
-        <div>
-           <h1> {count} 
-            <button onClick={incrementCount}>  Click   </button>
-           </h1>
-        <span className="book-list">
+        <div className="book-list">
             {renderedBooks}
-        </span>
         </div>
     );
     }
