@@ -1,14 +1,14 @@
 import { useEffect } from "react";
-import BookCreate from "./components/BookCreate";
-import BookList from "./components/BookList";
-import useBooksContext from "./hooks/use-books-context";
+import MemberCreate from "./components/MemberCreate";
+import MemberList from "./components/MemberList";
+import useMembersContext from "./hooks/use-members-context";
 
 function App() {
 
-    const { fetchBooks } = useBooksContext();
+    const { fetchMembers } = useMembersContext();
 
     useEffect(() => {
-        fetchBooks();
+        fetchMembers();
     }, []);
 
 
@@ -17,9 +17,9 @@ function App() {
 
     return (
         <div className="app">
-            <h1>Reading List</h1>
-            <BookList />
-            <BookCreate  />
+            <h1>Group List</h1>
+            <MemberList />
+            <MemberCreate  />
         </div>
     );
 }

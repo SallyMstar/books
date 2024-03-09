@@ -1,15 +1,15 @@
 {
-  "books": [
+  "members": [
     {
-      "title": "Dune Buggy",
+      "name": "In the Mist",
       "id": 3
     },
     {
-      "title": "Strawberry Fields",
+      "name": "Strawberry Fields",
       "id": 4
     },
     {
-      "title": "Deep Sea Diving",
+      "name": "Deep Sea Diving",
       "id": 5
     }
   ]

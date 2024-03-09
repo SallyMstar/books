@@ -1,13 +1,13 @@
 import { useState } from "react";
-import BookEdit from "./BookEdit";
-import useBooksContext from "../hooks/use-books-context";
+import MemberEdit from "./MemberEdit";
+import useMembersContext from "../hooks/use-members-context";
 
-function BookShow ( {book} ) {
+function MemberShow ( {member} ) {
     const [showEdit, setShowEdit] = useState(false);
-    const { deleteBookById } = useBooksContext();
+    const { deleteMemberById } = useMembersContext();
 
     const handleDeleteClick = () => {
-        deleteBookById(book.id);
+        deleteMemberById(member.id);
     };
 
     const handleEditClick = () => {
@@ -20,19 +20,19 @@ function BookShow ( {book} ) {
     }
 
 
-    let content = <h3>{book.title}</h3> 
+    let content = <h3>{member.name}</h3> 
         if (showEdit) {  // meaning if the value of showEdit = True, then open the edit fields
-            content = <BookEdit 
+            content = <MemberEdit 
                         onSubmit = {handleSubmit}
-                        book = {book} 
+                        member = {member} 
                     />;
         }
 
     return (
     <div className="book-show">
         <img 
-            alt="books"
-            src= {`https://picsum.photos/seed/${book.id}/300/200`}
+            alt="members"
+            src= {`https://picsum.photos/seed/${member.id}/300/200`}
         />
         <div>{content}</div>
         <div className="actions">
@@ -47,5 +47,5 @@ function BookShow ( {book} ) {
     );
     }
 
-    export default BookShow;
+    export default MemberShow;
     
