@@ -19,29 +19,31 @@ function MemberShow ( {member} ) {
 
     }
 
+    console.log(member.group);
 
-    let content = <h3>{member.name}</h3> 
+    let content = <span><h3>{member.name}</h3><h2>{member.group}</h2></span>
         if (showEdit) {  // meaning if the value of showEdit = True, then open the edit fields
             content = <MemberEdit 
                         onSubmit = {handleSubmit}
                         member = {member} 
+                        group = {member.group}
                     />;
         }
 
     return (
     <div className="book-show">
-        <img 
+        {/* <img 
             alt="members"
             src= {`https://picsum.photos/seed/${member.id}/300/200`}
-        />
+        /> */}
         <div>{content}</div>
         <div className="actions">
-            <button className="edit" onClick = {handleEditClick}>
+            {/* <button className="edit" onClick = {handleEditClick}>
                 Edit
-            </button>
-            <button className="delete" onClick={handleDeleteClick}>
+            </button> */}
+            {/* <button className="delete" onClick={handleDeleteClick}>
                 Delete
-            </button>
+            </button> */}
         </div>
     </div>
     );

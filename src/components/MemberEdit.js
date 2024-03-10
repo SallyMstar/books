@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useMembersContext from "../hooks/use-members-context";
 
-function MemberEdit ( {member, onSubmit} ) {
+function MemberEdit ({member,onSubmit} ) {
     const [name, setName] = useState(member.name);
     const { editMemberById } = useMembersContext();
 
@@ -9,11 +9,11 @@ function MemberEdit ( {member, onSubmit} ) {
         setName(event.target.value);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event, group) => {
         event.preventDefault ();
         
         onSubmit();
-        editMemberById(member.id, name);
+        editMemberById(member.id, name, group);
     }
    
     return (

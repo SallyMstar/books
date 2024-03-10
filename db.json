@@ -2,15 +2,20 @@
   "members": [
     {
       "name": "In the Mist",
+      "group": "Prayer",
       "id": 3
     },
     {
       "name": "Strawberry Fields",
+      "group": "Preaching",
       "id": 4
     },
     {
       "name": "Deep Sea Diving",
+      "group": "Prayer",
       "id": 5
     }
   ]
 }
+
+// manual updates must be made directly to git/fake-server#connect/db.json

@@ -5,9 +5,10 @@ const MembersContext = createContext();
 
 function Provider({ children }) {  // this function "provider" can be confusing, but it just wraps the built-in Context "provider"
     const [members, setMembers] = useState([]);  // create the state for books
+    
 
     const fetchMembers = async () => {
-        const response = await axios.get('http://localhost:3001/members',{  
+        const response = await axios.get('https://fake-server-52bf3c13e154.herokuapp.com/members',{  
             'Content-Type': 'applications/json'
         });
 
@@ -16,9 +17,10 @@ function Provider({ children }) {  // this function "provider" can be confusing,
         // Don't call fetchBooks() directly from App component - will cause infinite loop
 
     }
-    const editMemberById = async (id, newMember) => {
-        const response = await axios.put(`http://localhost:3001/members/${id}`, {
-            name: newMember
+    const editMemberById = async (id, newMember, group) => {
+        const response = await axios.put(`https://fake-server-52bf3c13e154.herokuapp.com/members/${id}`, {
+            name: newMember,
+            group: group
         });
 
         console.log(response);
@@ -36,7 +38,7 @@ function Provider({ children }) {  // this function "provider" can be confusing,
     
 
     const deleteMemberById = async (id) => {  // function to pass as prop downstream
-        await axios.delete(`http://localhost:3001/members/${id}`);
+        await axios.delete(`https://fake-server-52bf3c13e154.herokuapp.com/members/${id}`);
 
 
         const updatedMembers = members.filter((member) => {  // preserves new array of all entries that pass the test
@@ -47,14 +49,15 @@ function Provider({ children }) {  // this function "provider" can be confusing,
     };
 
     // begin event handler
-    const createMember = async (name) => {  // create the post function & wait for it to complete
-        const response = await axios.post('http://localhost:3001/members', {
+    const createMember = async (name, group) => {  // create the post function & wait for it to complete
+        const response = await axios.post('https://fake-server-52bf3c13e154.herokuapp.com/members', {
             name,
+            group
         });
 
         const updatedMembers =[
             ...members,
-            response.data  // random ID and equivalent shorthand for {id: ***, title: title}
+            response.data  // random ID and equivalent shorthand for {id: ***, name: name}
         ];
 
         setMembers(updatedMembers);
